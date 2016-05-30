@@ -1,6 +1,7 @@
 package com.tan.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tan.model.Administrator;
+import com.tan.model.Announcement;
 import com.tan.service.AdminService;
 
 @Controller
@@ -100,6 +102,24 @@ public class AdminController {
 		mv.setViewName("index");
 		return mv;
 	}
+	@RequestMapping(value="/announcement",method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getAnnouncement(@RequestParam("title") String title,@RequestParam(value="datatime",required=true) String date,@RequestParam(value="myContent",required=true) String content){
+		System.out.println("提交公告通知");
+		ModelAndView mv = new ModelAndView();
+		Announcement announcement=new Announcement();
+		//announcement.setIdannouncement(007);id已在bean注解中设置自动增长
+		announcement.setTitle(title);
+		announcement.setDate(date);
+		announcement.setContent(content);
+		mv.setViewName("administrator");
+		if(service.addAnnouncement(announcement)){
+			mv.addObject("message", "title:"+title+",\n date:"+date+",\n content:"+content);
+		}
+		else
+			mv.addObject("message", "插入公告通知失败！");
+		return mv;
+	}
 	
 	@RequestMapping(value="/manage-permission",method=RequestMethod.GET)
 	public ModelAndView getManage_permission(){
@@ -126,11 +146,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/customerInformation",method=RequestMethod.GET)
-	public ModelAndView getCustomerInformation(){
+	public String getCustomerInformation(){
 		System.out.println("跳转到客户信息视图");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("customerInformation");
-		return mv;
+		
+		return "customerInformation";
 	}
 	
 	@RequestMapping(value="/accountRegister",method=RequestMethod.GET)

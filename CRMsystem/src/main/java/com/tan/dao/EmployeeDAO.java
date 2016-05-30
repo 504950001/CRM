@@ -75,7 +75,6 @@ public class EmployeeDAO {
 }
 
 	public Employee insertEmployee(Employee employee){
-		String hsql="from employee";
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(employee);;
 		return employee;

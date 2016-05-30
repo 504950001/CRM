@@ -24,7 +24,7 @@
 		<property name="packagesToScan">
 			<list>
 				<!-- 可以加多个包 -->
-				<value>com.tan.*</value>
+				<value>com.tan.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -49,7 +49,7 @@
       <!-- JPA Entity Manager Factory -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.tan.model.*" />
+		<property name="packagesToScan" value="com.tan.*" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />

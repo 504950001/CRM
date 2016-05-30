@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tan.dao.AdminDAO;
 import com.tan.model.Administrator;
+import com.tan.model.Announcement;
+import com.tan.model.Employee;
 
 @Service("adminService")
 public class AdminService {
@@ -46,5 +48,18 @@ public class AdminService {
 		} else {
 			return null;
 		}
+	}
+	
+	@Transactional
+	public boolean addAnnouncement(Announcement announcement) {
+		System.out.println("跳转addAnnouncement函数\nannouncement.getIdannouncement()="+announcement.getIdannouncement());
+		
+		if(adminDao.insertAnnouncement(announcement)!=null){
+			System.out.println("插入一条公告信息");
+			adminDao.insertAnnouncement(announcement);
+			return true;
+		}
+		else
+			return false;
 	}
 }

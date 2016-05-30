@@ -14,8 +14,7 @@
     	http://www.springframework.org/schema/tx
     	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         ">
-
-	  
+  
 	<bean id="adminDAO" class="com.tan.dao.AdminDAO">
 		  <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -24,5 +23,19 @@
 		<property name="adminDao" ref="adminDAO"></property>
 	</bean>
       
-   
+   <bean id="employeeDAO" class="com.tan.dao.EmployeeDAO">
+		  <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="employeeService" class="com.tan.service.EmployeeService">
+		<property name="employeeDao" ref="employeeDAO"></property>
+	</bean>
+	
+	<bean id="customerDAO" class="com.tan.dao.CustomerDAO">
+		  <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="customerService" class="com.tan.service.CustomerService">
+		<property name="customerDao" ref="customerDAO"></property>
+	</bean>
 </beans>

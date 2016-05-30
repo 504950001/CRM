@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.tan.model.Employee;
 import com.tan.service.EmployeeService;
 
@@ -35,19 +36,17 @@ public class EmployeeController {
 //	比如异步获取json数据，加上@responsebody后，会直接返回json数据。
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView loginCheck(@RequestParam("username") String username,
+	public String loginCheck(@RequestParam("name") String username,
 			@RequestParam("password") String password,
 			HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
 		Employee employee = service.loginCheck(username, password);
-		
+		String employeeString=JSON.toJSONString(employee);
+		System.out.println("loginCheck"+employeeString);
 		if (employee != null) {
-			mv.addObject("message", username+","+password);
+			return employeeString;
 		} else {
-			mv.addObject("message", "defeat登录失败！");
+			return null;
 		}
-		mv.setViewName("employee");
-		return mv;
 	}
 	
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
@@ -83,3 +82,20 @@ public class EmployeeController {
 		return mv;
 	}
 }
+//
+//@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+//@ResponseBody
+//public ModelAndView loginCheck(@RequestParam("username") String username,
+//		@RequestParam("password") String password,
+//		HttpServletRequest request) {
+//	ModelAndView mv = new ModelAndView();
+//	Employee employee = service.loginCheck(username, password);
+//	
+//	if (employee != null) {
+//		mv.addObject("message", username+","+password);
+//	} else {
+//		mv.addObject("message", "defeat登录失败！");
+//	}
+//	mv.setViewName("employee");
+//	return mv;
+//}

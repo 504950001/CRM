@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.tan.model.Administrator;
+import com.tan.model.Announcement;
+import com.tan.model.Employee;
 
 
 @Repository
@@ -67,5 +69,10 @@ public class AdminDAO {
 			System.out.println(resultList.get(i));
 		}
 		return resultList;
+	}
+	public Announcement insertAnnouncement(Announcement announcement){
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(announcement);;
+		return announcement;
 	}
 }
