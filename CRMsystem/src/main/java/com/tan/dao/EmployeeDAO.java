@@ -17,7 +17,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.tan.model.Customer;
 import com.tan.model.Employee;
+import com.tan.model.Report;
 import com.tan.util.SqlUtil;
 
 @Repository
@@ -35,11 +37,23 @@ public class EmployeeDAO {
 		return sessionFactory;
 	}
 	
-	public List<Employee> getAllEmployee(){
+	public List<Employee> getAllEmployees(){
 		String hsql="from employee";
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(hsql);
 		return query.list();
+	}
+	
+	public List<Report> getAllReports(){
+		String hsql="from report";
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hsql);
+		return query.list();
+	}
+	
+	public void removeReport(Report report){
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(report);
 	}
 	
 	public <T> List<T> findByCondition(Map<String, String> paramMap, Class<T> clazz) {
@@ -78,6 +92,13 @@ public class EmployeeDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(employee);;
 		return employee;
+	}
+	
+	public Report insertReport(Report report){
+		System.out.println("员工汇报dao");
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(report);
+		return report;
 	}
 }
 

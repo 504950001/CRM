@@ -1,77 +1,157 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>CRM管理系统</title>
-		<meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/CRM/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/CRM/css/bootstrap-responsive.min.css" />
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/CRM/css/fullcalendar.css" />	
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/CRM/css/unicorn.main.css" />
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/CRM/css/unicorn.grey.css" class="skin-color" />
-	</head>
-	<body>
-		
-		
-		<div id="header">
-			<h1><a href="index.html">首页</a></h1>		
-		</div>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>CRM管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<div id="user-nav" class="navbar navbar-inverse">
-            <ul class="nav btn-group">
-                <li class="btn btn-inverse" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">${sessionScope.login_admin.username}</span></a></li>
-                <li class="btn btn-inverse"><a title="" href="<%=request.getContextPath()%>/admin/logout"><i class="icon icon-share-alt"></i> <span class="text">登出</span></a></li>
-            </ul>
-        </div>
-            
-		<div id="sidebar">
-			<a href="#" class="visible-phone"><i class="icon icon-home"></i>首页</a>
-			<ul>
-				<li class="active"><a href="<%=request.getContextPath()%>/admin/index"><i class="icon icon-home"></i> <span>公告通知</span></a></li>
-				<li class="submenu">
-					<a href="#"><i class="icon icon-th-list"></i> <span>管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理</span> <span class="label">3</span></a>
-					<ul>
-						<li><a href="<%=request.getContextPath()%>/admin/manage-permission">权限管理</a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/manage-user">用户管理</a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/manage-system">系统管理</a></li>
-					</ul>
-				</li>
-				<li><a href="<%=request.getContextPath()%>/admin/customerInformation"><i class="icon icon-tint"></i> <span>客户信息</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/admin/accountRegister"><i class="icon icon-pencil"></i> <span>账号开通</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/admin/employeeReport"><i class="icon icon-th"></i> <span>员工汇报</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/admin/taskPublish"><i class="icon icon-th-list"></i> <span>任务发布</span></a></li>
-			</ul>
-		
-		</div>
-		
-		<div id="style-switcher">
-			<i class="icon-arrow-left icon-white"></i>
-			<span>Style:</span>
-			<a href="#grey" style="background-color: #555555;border-color: #aaaaaa;"></a>
-            <a href="#light-blue" style="background-color: #8399b0;"></a>
-			<a href="#blue" style="background-color: #2D2F57;"></a>
-			<a href="#red" style="background-color: #673232;"></a>
-            <a href="#red-green" style="background-image: url('img/demo/red-green.png');background-repeat: no-repeat;"></a>
-		</div>
-		
-		<div id="content">
-			<div id="content-header">
-				<h1>公告通知</h1>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/colorpicker.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/datepicker.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/uniform.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/select2.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/unicorn.main.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/unicorn.grey.css"
+	class="skin-color" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CRM/css/bootstrap-datetimepicker.min.css" />
+
+</head>
+<body>
+
+
+	<div id="header">
+		<h1>
+			<a href="index.html">首页</a>
+		</h1>
+	</div>
+
+	<div id="user-nav" class="navbar navbar-inverse">
+		<ul class="nav btn-group">
+			<li class="btn btn-inverse"><a title="" href="#"><i
+					class="icon icon-user"></i> <span class="text">${sessionScope.login_admin.username}</span></a></li>
+			<li class="btn btn-inverse"><a title=""
+				href="<%=request.getContextPath()%>/admin/logout"><i
+					class="icon icon-share-alt"></i> <span class="text">登出</span></a></li>
+		</ul>
+	</div>
+
+	<div id="sidebar">
+		<a href="#" class="visible-phone"><i class="icon icon-home"></i>首页</a>
+		<ul>
+			<li class="active"><a
+				href="<%=request.getContextPath()%>/admin/index"><i
+					class="icon icon-home"></i> <span>公告通知</span></a></li>
+			<li class="submenu"><a href="#"><i class="icon icon-th-list"></i>
+					<span>管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理</span> <span
+					class="label">3</span></a>
+				<ul>
+					<li><a
+						href="<%=request.getContextPath()%>/admin/manage-permission">权限管理</a></li>
+					<li><a href="<%=request.getContextPath()%>/admin/manage-user">用户管理</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/admin/manage-system">系统管理</a></li>
+				</ul></li>
+			<li><a
+				href="<%=request.getContextPath()%>/customer/customerList"><i
+					class="icon icon-tint"></i> <span>客户信息</span></a></li>
+			<li><a
+				href="<%=request.getContextPath()%>/admin/accountRegister"><i
+					class="icon icon-pencil"></i> <span>账号开通</span></a></li>
+			<li><a href="<%=request.getContextPath()%>/admin/employeeReport"><i
+					class="icon icon-th"></i> <span>员工汇报</span></a></li>
+			<li><a href="<%=request.getContextPath()%>/admin/taskPublish"><i
+					class="icon icon-th-list"></i> <span>任务发布</span></a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div id="content-header">
+			<h1>公告通知</h1>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon"> <i class="icon-align-justify"></i>
+								</span>
+								<h5>公告通知</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/admin/announcement"
+									name="basic_validate" id="basic_validate"
+									novalidate="novalidate">
+									<div class="control-group">
+										<label class="control-label">主题</label>
+										<div class="controls">
+											<input type="text" name="title" id="title">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">日期选择</label>
+										<div class="controls">
+											<div class="input-append date form_datetime">
+												<input size="24" type="text" value="" name="datatime" id="datatime" readonly>
+												<span class="add-on"><i class="icon-remove"></i></span> <span
+													class="add-on"><i class="icon-th"></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">内容</label>
+										<div class="controls">
+											<textarea rows="5" cols="" name="myContent" id="myContent"></textarea>
+										</div>
+									</div>
+									<div class="form-actions">
+										<input type="reset" value="清空" class="btn btn-primary">
+										<input type="submit" value="发布" class="btn btn-primary">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		
 		</div>
-            <script src="<%=request.getContextPath()%>/CRM/js/excanvas.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/jquery.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/jquery.ui.custom.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/bootstrap.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/jquery.flot.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/jquery.flot.resize.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/jquery.peity.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/fullcalendar.min.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/unicorn.js"></script>
-            <script src="<%=request.getContextPath()%>/CRM/js/unicorn.dashboard.js"></script>
-	</body>
+		<div class="row-fluid">
+				<div id="footer" class="span12">
+					2015 - 2016 &copy; CRM Admin. Brought to you by <a href="#">tanzhouming</a>
+				</div>
+			</div>
+	</div>
+	<script src="<%=request.getContextPath()%>/CRM/js/jquery.min.js"></script>
+	<script src="<%=request.getContextPath()%>/CRM/js/jquery.ui.custom.js"></script>
+	<script src="<%=request.getContextPath()%>/CRM/js/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/CRM/js/bootstrap-colorpicker.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/CRM/js/bootstrap-datepicker.js"></script>
+	<script src="<%=request.getContextPath()%>/CRM/js/jquery.uniform.js"></script>
+	<script src="<%=request.getContextPath()%>/CRM/js/select2.min.js"></script>
+	<script src="<%=request.getContextPath()%>/CRM/js/unicorn.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/CRM/js/unicorn.form_validation.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/CRM/js/unicorn.form_common.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/CRM/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript">
+		$(".form_datetime").datetimepicker({
+			format : 'yyyy-mm-dd hh:ii',
+			showMeridian : true,
+			autoclose : true,
+			todayBtn : true
+		});
+	</script>
+</body>
 </html>

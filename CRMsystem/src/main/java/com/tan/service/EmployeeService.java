@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tan.dao.EmployeeDAO;
 import com.tan.model.Employee;
+import com.tan.model.Report;
 
 @Service("employeeService")
 public class EmployeeService {
@@ -20,7 +21,7 @@ public class EmployeeService {
 	
 	@Transactional
 	public int employeeCount(){
-		return employeeDao.getAllEmployee().size();
+		return employeeDao.getAllEmployees().size();
 	}
 
 	public EmployeeDAO getEmployeeDao() {
@@ -64,6 +65,37 @@ public class EmployeeService {
 		if(idEmpty(employee.getId())){
 			System.out.println("插入一条员工信息");
 			employeeDao.insertEmployee(employee);
+			return true;
+		}
+		else
+			return false;
+	}
+	@Transactional
+	public List<Employee> employeeList() {
+		System.out.println("获取员工列表");
+		List<Employee> employeeList= employeeDao.getAllEmployees();
+		return employeeList;
+	}
+	
+	@Transactional
+	public List<Report> reportList() {
+		System.out.println("获取员工列表");
+		List<Report> reportList= employeeDao.getAllReports();
+		return reportList;
+	}
+	
+	@Transactional
+	public void deleteReport(Report report) {
+		System.out.println("服务-删除一条员工汇报");
+		employeeDao.removeReport(report);
+	}
+	
+	@Transactional
+	public boolean addReport(Report report) {
+		System.out.println("跳转员工汇报服务-"+report.getAuthor());
+		
+		if(employeeDao.insertReport(report)!=null){
+			System.out.println("插入了一条员工汇报");
 			return true;
 		}
 		else

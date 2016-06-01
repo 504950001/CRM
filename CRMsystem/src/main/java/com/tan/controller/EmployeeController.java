@@ -1,7 +1,10 @@
 package com.tan.controller;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.tan.model.Employee;
+import com.tan.model.Report;
 import com.tan.service.EmployeeService;
 
 @Controller
@@ -58,7 +62,7 @@ public class EmployeeController {
 			@RequestParam("sex") String sex,
 			@RequestParam("telephone") String telephone,
 			@RequestParam("email") String email,
-			HttpServletRequest request) {
+			HttpServletRequest request,HttpServletResponse response) throws IOException {
 		System.out.println("跳转到employee视图");
 		ModelAndView mv = new ModelAndView();
 		Employee employee=new Employee();
@@ -68,11 +72,11 @@ public class EmployeeController {
 		employee.setSex(sex);
 		employee.setEmail(email);
 		employee.setTelephone(telephone);
-//		if(service.idEmpty(id)&&password.equals(password2)){
 		if(service.idEmpty(id)){
 			service.addEmployees(employee);
 			System.out.println("service.addEmployees(employee)="+service.addEmployees(employee));
-			mv.addObject("message", "id="+id);
+			response.sendRedirect(request.getContextPath()+"/admin/accountRegister");
+			//mv.addObject("message", "id="+id);
 		}
 		else{
 			mv.addObject("message", "defeat！id已存在");
@@ -80,6 +84,20 @@ public class EmployeeController {
 			
 		mv.setViewName("administrator");
 		return mv;
+	}
+	
+	@RequestMapping(value="/report",method=RequestMethod.POST)
+	@ResponseBody
+	public String report(@RequestParam("title") String title,@RequestParam("author") String author,
+			@RequestParam("content") String content){
+		System.out.println("员工汇报（手机端）");
+		System.out.println("title="+title+",author="+author+",content="+content);
+		Report report=new Report();
+		report.setTitle(title);
+		report.setAuthor(author);
+		report.setContent(content);
+		service.addReport(report);
+		return author;
 	}
 }
 //

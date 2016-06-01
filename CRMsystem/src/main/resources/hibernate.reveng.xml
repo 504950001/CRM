@@ -2,5 +2,6 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="announcement" match-catalog="crm"></table-filter>
+	<table-filter match-name="task" match-catalog="crm"></table-filter>
+	<table-filter match-name="report" match-catalog="crm"></table-filter>
 </hibernate-reverse-engineering>

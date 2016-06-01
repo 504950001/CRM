@@ -13,6 +13,7 @@ import com.tan.dao.AdminDAO;
 import com.tan.model.Administrator;
 import com.tan.model.Announcement;
 import com.tan.model.Employee;
+import com.tan.model.Task;
 
 @Service("adminService")
 public class AdminService {
@@ -61,5 +62,23 @@ public class AdminService {
 		}
 		else
 			return false;
+	}
+	
+	@Transactional
+	public List<Announcement>  getAllannouncement() {
+		System.out.println("获取所有公告通知信息：dao应该只关心数据的增删查改，不然service和dao的存在感觉意义不大");
+		return adminDao.getAnnouncements();
+	}
+	
+	@Transactional
+	public void addTask(Task task) {
+		System.out.println("跳转添加任务服务admin/addTask");
+		adminDao.insertTast(task);
+	}
+	
+	@Transactional
+	public List<Task> taskList() {
+		System.out.println("任务列表");
+		return adminDao.getTasks();
 	}
 }

@@ -1,6 +1,7 @@
 package com.tan.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.List;
@@ -27,7 +28,6 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@RequestMapping(value = "/customerList", method = RequestMethod.GET)
-	@ResponseBody
 	public ModelAndView customerList(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("客户列表");
 		List<Customer> customerList = customerService.customerList();
@@ -41,11 +41,20 @@ public class CustomerController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/customerListTel", method = RequestMethod.POST)
+	@ResponseBody
+	public String customerListTel(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("手机获取客户列表");
+		List<Customer> customerList = customerService.customerList();
+		String customerString = JSON.toJSONString(customerList);
+		System.out.println(customerString);
+		return customerString;
+	}
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView addcustomer(@RequestParam("id") String id, @RequestParam("name") String name,
 			@RequestParam("sex") String sex, @RequestParam("telephone") String telephone,
-			@RequestParam("email") String email, @RequestParam("address") String address, HttpServletRequest request) {
+			@RequestParam("email") String email, @RequestParam("address") String address, HttpServletRequest request,HttpServletResponse response) throws IOException {
 		System.out.println("跳转到customer视图");
 		ModelAndView mv = new ModelAndView();
 		Customer customer = new Customer();
@@ -57,9 +66,10 @@ public class CustomerController {
 		if (customerService.idEmpty(id)) {
 			customerService.addCustomer(customer);
 			System.out.println("service.addcustomers(customer)=" + customerService.addCustomer(customer));
-			mv.addObject("message", "id=" + id);
+			response.sendRedirect(request.getContextPath()+"/customer/customerList");
+			//mv.addObject("message", "id=" + id);
 		} else {
-			mv.addObject("message", "defeat！id已存在");
+			mv.addObject("message", "defeat！id已存在或为空");
 		}
 
 		mv.setViewName("administrator");

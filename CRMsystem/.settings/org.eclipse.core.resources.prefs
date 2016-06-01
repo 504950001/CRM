@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/tan/controller/AdminController.java=UTF-8
+encoding//src/main/java/com/tan/controller/EmployeeController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/admin/homePage.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/accountRegister.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/administrator.jsp=UTF-8
@@ -12,3 +14,4 @@ encoding//src/main/webapp/WEB-INF/pages/manage-system.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/manage-user.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/taskPublish.jsp=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
+encoding/<project>=UTF-8

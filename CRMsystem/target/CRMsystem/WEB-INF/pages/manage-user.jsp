@@ -28,33 +28,33 @@
         </div>
             
 		<div id="sidebar">
-			<a href="#" class="visible-phone"><i class="icon icon-home"></i> 首页</a>
-			<ul>
-				<li><a href="index.html"><i class="icon icon-home"></i> <span>公告通知</span></a></li>
-				<li class="submenu active open">
-					<a href="#"><i class="icon icon-th-list"></i> <span>管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理</span> <span class="label">3</span></a>
-					<ul>
-						<li><a href="manage-permission.html">权限管理</a></li>
-						<li class="active"><a href="manage-user.html">用户管理</a></li>
-						<li><a href="manage-system.html">系统管理</a></li>
-					</ul>
-				</li>
-				<li><a href="customerInformation.html"><i class="icon icon-tint"></i> <span>客户信息</span></a></li>
-				<li><a href="accountRegister.html"><i class="icon icon-pencil"></i> <span>账号开通</span></a></li>
-				<li><a href="employeeReport.html"><i class="icon icon-th"></i> <span>员工汇报</span></a></li>
-				<li><a href="taskPublish.html"><i class="icon icon-th-list"></i> <span>任务发布</span></a></li>
-			</ul>
-		</div>
-		
-		<div id="style-switcher">
-			<i class="icon-arrow-left icon-white"></i>
-			<span>Style:</span>
-			<a href="#grey" style="background-color: #555555;border-color: #aaaaaa;"></a>
-            <a href="#light-blue" style="background-color: #8399b0;"></a>
-			<a href="#blue" style="background-color: #2D2F57;"></a>
-			<a href="#red" style="background-color: #673232;"></a>
-            <a href="#red-green" style="background-image: url('img/demo/red-green.png');background-repeat: no-repeat;"></a>
-		</div>
+		<a href="#" class="visible-phone"><i class="icon icon-home"></i>首页</a>
+		<ul>
+			<li><a
+				href="<%=request.getContextPath()%>/admin/index"><i
+					class="icon icon-home"></i> <span>公告通知</span></a></li>
+			<li  class="submenu active open"><a href="#"><i class="icon icon-th-list"></i>
+					<span>管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理</span> <span
+					class="label">3</span></a>
+				<ul>
+					<li><a
+						href="<%=request.getContextPath()%>/admin/manage-permission">权限管理</a></li>
+					<li  class="active"><a href="<%=request.getContextPath()%>/admin/manage-user">用户管理</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/admin/manage-system">系统管理</a></li>
+				</ul></li>
+			<li><a
+				href="<%=request.getContextPath()%>/customer/customerList"><i
+					class="icon icon-tint"></i> <span>客户信息</span></a></li>
+			<li><a
+				href="<%=request.getContextPath()%>/admin/accountRegister"><i
+					class="icon icon-pencil"></i> <span>账号开通</span></a></li>
+			<li><a href="<%=request.getContextPath()%>/admin/employeeReport"><i
+					class="icon icon-th"></i> <span>员工汇报</span></a></li>
+			<li><a href="<%=request.getContextPath()%>/admin/taskPublish"><i
+					class="icon icon-th-list"></i> <span>任务发布</span></a></li>
+		</ul>
+	</div>
 		
 		<div id="content">
 			<div id="content-header">

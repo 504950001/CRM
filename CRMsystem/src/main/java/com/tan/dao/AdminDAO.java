@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import com.tan.model.Administrator;
 import com.tan.model.Announcement;
 import com.tan.model.Employee;
+import com.tan.model.Task;
 
 
 @Repository
@@ -74,5 +75,25 @@ public class AdminDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(announcement);;
 		return announcement;
+	}
+	
+	public List<Announcement> getAnnouncements(){
+		String hsql="from announcement";
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hsql);
+		return query.list();
+	}
+	
+	public Task insertTast(Task task){
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(task);
+		return task;
+	}
+	
+	public List<Task> getTasks(){
+		String hsql="from task";
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hsql);
+		return query.list();
 	}
 }
