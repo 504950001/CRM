@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="logo">
-            <img src="img/logo.png" alt="" />
+            <img src="<%=request.getContextPath()%>/CRM/img/logo.png" alt="" />
         </div>
         <div id="loginbox">            
             <form id="loginform" class="form-vertical" action="../admin/loginCheck" method="post">

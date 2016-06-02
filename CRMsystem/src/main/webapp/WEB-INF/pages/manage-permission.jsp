@@ -57,9 +57,57 @@
 	</div>
 
 		<div id="content">
-			<div id="content-header">
+		<div id="content-header">
 				<h1>权限管理</h1>
 			</div>
+			<div class="row-fluid">
+					<div class="span1"></div>
+					<div class="span6">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-th-list"></i>
+								</span>
+								<h5>管理员账户添加</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form id="form-wizard" class="form-horizontal" method="post" action="<%=request.getContextPath()%>/admin/addAdmin">
+									<div class="control-group">
+										<label class="control-label">管理员账户</label>
+										<div class="controls">
+											<input type="text" name="username" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">密码</label>
+										<div class="controls">
+											<input type="password" name="password" />
+										</div>
+									</div>
+									<div class="form-actions">
+											<input id="reset" class="btn btn-primary" type="reset" value="清空" />
+											<input id="submit" class="btn btn-primary" type="submit" value="提交" />
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="span4">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-th-list"></i>
+								</span>
+								<h5>管理员列表</h5>
+							</div>
+							<div class="widget-content">
+								现版本只支持管理员添加，后续将继续完善权限管理，将包括不同管理员的操作权限，包括
+								管理员添加删除管理员账户、客户账户和员工账户等权限。敬请期待。
+							</div>
+						</div>
+					</div>
+					<div class="span1"></div>
+				</div>
 		</div>
 		
 		

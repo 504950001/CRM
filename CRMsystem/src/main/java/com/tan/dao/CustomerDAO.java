@@ -60,14 +60,14 @@ public class CustomerDAO {
 		paramMap.put("id", customerID);
 		Iterator iterator = paramMap.entrySet().iterator();
 		String jpql = SqlUtil.getSqlCondition(paramMap);
-		Query query= (Query) entityManager.createQuery("select obj from " + "customer" + jpql);
+		TypedQuery query=  (TypedQuery) entityManager.createQuery("select obj from " + "customer" + jpql);
 		List<Customer> resultList = ((javax.persistence.Query) query).getResultList();
 		for(int i=0;i<resultList.size();i++)
 		{
 			System.out.println(resultList.get(i));
 		}
 		return resultList;
-}
+	}
 
 	public Customer insertCustomer(Customer customer){
 		Session session = sessionFactory.getCurrentSession();

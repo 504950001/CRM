@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tan.dao.AdminDAO;
 import com.tan.model.Administrator;
 import com.tan.model.Announcement;
+import com.tan.model.Customer;
 import com.tan.model.Employee;
+import com.tan.model.Systeminfo;
 import com.tan.model.Task;
 
 @Service("adminService")
@@ -35,6 +37,17 @@ public class AdminService {
 		this.adminDao = adminDao;
 	}
 	
+	@Transactional
+	public boolean addAdmin(Administrator administrator) {
+		System.out.println("跳转addAdmin函数\nemployee.getId()=");
+		if(adminDao.findByAdminName(administrator.getUsername()).size()==0){
+			System.out.println("插入一条管理员信息");
+			adminDao.insertAdministrator(administrator);
+			return true;
+		}
+		else
+			return false;
+	}
 	public Administrator loginCheck(String username, String password) {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("username", username);
@@ -80,5 +93,19 @@ public class AdminService {
 	public List<Task> taskList() {
 		System.out.println("任务列表");
 		return adminDao.getTasks();
+	}
+	
+	//更新系统信息
+	@Transactional
+	public Systeminfo systemInfoList() {
+		System.out.println("获取系统信息");
+		return adminDao.getSystemInfo().get(0);
+	}
+	
+	//更新系统信息
+	@Transactional
+	public void updateSystemInfo(Systeminfo sysinfo) {
+		System.out.println("更新系统信息");
+		adminDao.updateSysteInfo(sysinfo);
 	}
 }

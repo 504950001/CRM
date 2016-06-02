@@ -1,5 +1,6 @@
 package com.tan.dao;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,11 @@ import org.springframework.stereotype.Repository;
 
 import com.tan.model.Administrator;
 import com.tan.model.Announcement;
+import com.tan.model.Customer;
 import com.tan.model.Employee;
+import com.tan.model.Systeminfo;
 import com.tan.model.Task;
+import com.tan.util.SqlUtil;
 
 
 @Repository
@@ -71,6 +75,27 @@ public class AdminDAO {
 		}
 		return resultList;
 	}
+	
+	public List<Administrator> findByAdminName(String username) {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("username", username);
+		Iterator iterator = paramMap.entrySet().iterator();
+		String jpql = SqlUtil.getSqlCondition(paramMap);
+		TypedQuery query=  (TypedQuery) entityManager.createQuery("select obj from " + "administrator" + jpql);
+		List<Administrator> resultList = ((javax.persistence.Query) query).getResultList();
+		for(int i=0;i<resultList.size();i++)
+		{
+			System.out.println(resultList.get(i));
+		}
+		return resultList;
+	}
+	public Administrator insertAdministrator(Administrator administrator){
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(administrator);;
+		return administrator;
+	}
+	
+	
 	public Announcement insertAnnouncement(Announcement announcement){
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(announcement);;
@@ -95,5 +120,16 @@ public class AdminDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(hsql);
 		return query.list();
+	}
+	public List<Systeminfo> getSystemInfo(){
+		String hsql="from systeminfo where idsysteminfo=1";
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(hsql);
+		return query.list();
+	}
+	
+	public void updateSysteInfo(Systeminfo systemInfo){
+		Session session = sessionFactory.getCurrentSession();
+		session.update(systemInfo);
 	}
 }

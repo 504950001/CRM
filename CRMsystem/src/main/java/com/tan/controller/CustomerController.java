@@ -52,7 +52,7 @@ public class CustomerController {
 	}
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView addcustomer(@RequestParam("id") String id, @RequestParam("name") String name,
+	public ModelAndView addcustomer(@RequestParam("idCustomer") String id, @RequestParam("name") String name,
 			@RequestParam("sex") String sex, @RequestParam("telephone") String telephone,
 			@RequestParam("email") String email, @RequestParam("address") String address, HttpServletRequest request,HttpServletResponse response) throws IOException {
 		System.out.println("跳转到customer视图");
@@ -63,6 +63,7 @@ public class CustomerController {
 		customer.setSex(sex);
 		customer.setEmail(email);
 		customer.setTelephone(telephone);
+		customer.setAddress(address);
 		if (customerService.idEmpty(id)) {
 			customerService.addCustomer(customer);
 			System.out.println("service.addcustomers(customer)=" + customerService.addCustomer(customer));

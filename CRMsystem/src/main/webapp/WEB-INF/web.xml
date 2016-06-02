@@ -26,8 +26,11 @@
   <filter-class>com.tan.util.LoginFilter</filter-class>
   <init-param>
    <param-name>excludedUrls</param-name>
-   <param-value>/admin/login,/admin/logout,/CRMsystem/CRM/css/bootstrap.min.css,
-			/CRMsystem/CRM/css/bootstrap-responsive.min.css,/CRMsystem/CRM/css/unicorn.login.css,/employee/loginCheck,/employee/report,/admin/announcementList,/admin/taskList,
+   <param-value>/admin/login,/admin/logout,
+   			<!-- 文件夹过滤 -->
+   			/CRMsystem/CRM/,
+			<!-- 过滤手机操作URL -->
+			/employee/loginCheck,/employee/report,/admin/announcementList,/admin/taskList,
 			/customer/customerListTel</param-value>
   </init-param>
  </filter>
@@ -55,10 +58,7 @@
   <servlet-name>springmvc</servlet-name>
   <url-pattern>/</url-pattern>
  </servlet-mapping>
- <locale-encoding-mapping-list>
-  <locale-encoding-mapping>
-   <locale>encoding</locale>
-   <encoding>utf-8</encoding>
-  </locale-encoding-mapping>
- </locale-encoding-mapping-list>
+ <welcome-file-list>
+  <welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
+ </welcome-file-list>
 </web-app>
