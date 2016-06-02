@@ -161,6 +161,15 @@ public class AdminController {
 		mv.addObject("systemInfo",sysInfo);
 		return mv;
 	}
+	@RequestMapping(value="/getSystemInfo",method=RequestMethod.POST)
+	@ResponseBody
+	public String getSystemInfo(){
+		System.out.println("跳转到系统管理视图（手机获取json字符串）");
+		Systeminfo sysInfo=service.systemInfoList();
+		String systeminfoString=JSON.toJSONString(sysInfo);
+		return systeminfoString;
+	}
+	
 	@RequestMapping(value="/updateSystemInfo",method=RequestMethod.POST)
 	public ModelAndView updateManage_system(@RequestParam("sysName") String sysName,@RequestParam("version") String version,
 			@RequestParam("person") String person,@RequestParam("email") String email,HttpServletRequest request, HttpServletResponse response) throws IOException{

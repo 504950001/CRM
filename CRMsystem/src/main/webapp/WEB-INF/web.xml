@@ -31,7 +31,7 @@
    			/CRMsystem/CRM/,
 			<!-- 过滤手机操作URL -->
 			/employee/loginCheck,/employee/report,/admin/announcementList,/admin/taskList,
-			/customer/customerListTel</param-value>
+			/customer/customerListTel,/admin/getSystemInfo</param-value>
   </init-param>
  </filter>
  <filter-mapping>

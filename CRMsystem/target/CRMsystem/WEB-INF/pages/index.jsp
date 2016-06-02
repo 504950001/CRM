@@ -127,7 +127,7 @@
 				<div id="footer" class="span12">
 					2015 - 2016 &copy; CRM Admin. Brought to you by <a href="#">tanzhouming</a>
 				</div>
-			</div>
+		</div>
 	</div>
 	<script src="<%=request.getContextPath()%>/CRM/js/jquery.min.js"></script>
 	<script src="<%=request.getContextPath()%>/CRM/js/jquery.ui.custom.js"></script>

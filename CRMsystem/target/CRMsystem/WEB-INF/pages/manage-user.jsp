@@ -59,9 +59,73 @@
 		<div id="content">
 			<div id="content-header">
 				<h1>用户管理</h1>
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-pencil"></i>
+								</span>
+								<h5>客户账户录入</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form id="form-wizard" class="form-horizontal" method="post" action="<%=request.getContextPath()%>/customer/addCustomer">
+									<div class="control-group">
+										<label class="control-label">顾客ID</label>
+										<div class="controls">
+											<input id="idCustomer" type="text" name="idCustomer" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">顾客姓名</label>
+										<div class="controls">
+											<input id="name" type="text" name="name" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">性别</label>
+										<div class="controls">
+											<input id="sex" type="text" name="sex" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">电话</label>
+										<div class="controls">
+											<input id="telephone" type="tel" name="telephone" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">邮箱</label>
+										<div class="controls">
+											<input id="email" type="email" name="email" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">地址</label>
+										<div class="controls">
+											<input id="address" type="text" name="address" />
+										</div>
+									</div>
+									<div class="form-actions">
+											<input id="reset" class="btn btn-primary" type="reset" value="清空" />
+											<input id="submit" class="btn btn-primary" type="submit" value="提交" />
+									</div>
+									<div id="submitted"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2015 - 2016 &copy; CRM Admin. Brought to you by <a href="#">tanzhouming</a>
+					</div>
+				</div>
 			</div>
 		</div>
-		
+		</div>S		
        <script src="<%=request.getContextPath()%>/CRM/js/excanvas.min.js"></script>
        <script src="<%=request.getContextPath()%>/CRM/js/jquery.min.js"></script>
        <script src="<%=request.getContextPath()%>/CRM/js/jquery.ui.custom.js"></script>

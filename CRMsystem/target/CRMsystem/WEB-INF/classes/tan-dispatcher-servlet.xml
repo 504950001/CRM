@@ -18,6 +18,7 @@
        
     <mvc:annotation-driven /> 
     
+    
     <!-- 启动自动扫描 该包下所有的Bean(@Controller)  <context:component-scan base-package="com.tan.model" />-->
      <context:component-scan base-package="com.tan.*" />
      

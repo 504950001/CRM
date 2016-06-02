@@ -10,6 +10,7 @@ F:\workplaceR\CRMsystem\src\main\java\com\tan\model\Report.java
 F:\workplaceR\CRMsystem\src\main\java\com\tan\util\LoginFilter.java
 F:\workplaceR\CRMsystem\src\main\java\com\tan\dao\EmployeeDAO.java
 F:\workplaceR\CRMsystem\src\main\java\com\tan\model\Administrator.java
+F:\workplaceR\CRMsystem\src\main\java\com\tan\model\Systeminfo.java
 F:\workplaceR\CRMsystem\src\main\java\com\tan\service\AdminService.java
 F:\workplaceR\CRMsystem\src\main\java\com\tan\controller\AdminController.java
 F:\workplaceR\CRMsystem\src\main\java\com\tan\controller\EmployeeController.java
