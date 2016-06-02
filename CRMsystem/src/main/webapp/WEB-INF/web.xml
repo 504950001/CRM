@@ -27,7 +27,7 @@
   <init-param>
    <param-name>excludedUrls</param-name>
    <param-value>/admin/login,/admin/logout,
-   			<!-- 文件夹过滤 -->
+   			<!-- 文件夹过滤css、js -->
    			/CRMsystem/CRM/,
 			<!-- 过滤手机操作URL -->
 			/employee/loginCheck,/employee/report,/admin/announcementList,/admin/taskList,
